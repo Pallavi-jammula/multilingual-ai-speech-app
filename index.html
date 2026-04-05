@@ -2,12 +2,63 @@
 <html>
 <head>
   <title>Multilingual AI Speech App</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      margin: auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4facfe;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #007bff;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
+
 </head>
+
 <body>
 
-<h2>Multilingual AI Speech App</h2>
+<div class="container">
+  <h2>🌍 AI Speech App</h2>
 
-<select id="language">
+ <select id="language">
   <option value="en-US">English</option>
   <option value="hi-IN">Hindi</option>
   <option value="te-IN">Telugu</option>
@@ -23,16 +74,16 @@
   <option value="es-ES">Spanish</option>
   <option value="de-DE">German</option>
 </select>
+  <button onclick="startSpeech()">🎤 Start Speaking</button>
 
-<button onclick="startSpeech()">Start Speaking</button>
-
-<p id="output"></p>
+  <p id="output">Your speech will appear here...</p>
+</div>
 
 <script>
 function startSpeech() {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   const lang = document.getElementById("language").value;
-  
+
   recognition.lang = lang;
   recognition.start();
 
