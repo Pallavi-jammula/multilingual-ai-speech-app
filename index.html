@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multilingual AI Speech App</title>
+</head>
+<body>
+
+<h2>Multilingual AI Speech App</h2>
+
+<select id="language">
+  <option value="en-US">English</option>
+  <option value="hi-IN">Hindi</option>
+</select>
+
+<button onclick="startSpeech()">Start Speaking</button>
+
+<p id="output"></p>
+
+<script>
+function startSpeech() {
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  const lang = document.getElementById("language").value;
+  
+  recognition.lang = lang;
+  recognition.start();
+
+  recognition.onresult = function(event) {
+    document.getElementById("output").innerText =
+      event.results[0][0].transcript;
+  };
+}
+</script>
+
+</body>
+</html>
